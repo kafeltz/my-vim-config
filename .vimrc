@@ -201,3 +201,8 @@ let g:netrw_winsize=30
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,htmldjango EmmetInstall
 
+" syntastic
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+
