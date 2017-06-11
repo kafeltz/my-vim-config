@@ -45,6 +45,7 @@ let mapleader = "\<Space>"
 
 
 " set mouse=a
+set path=$PWD/**
 set backspace=indent,eol,start " http://vim.wikia.com/wiki/Backspace_and_delete_problems
 set hidden
 set nowrap
