@@ -23,8 +23,8 @@ els
             highlight SpecialKey ctermbg=none ctermfg=LightGray
         els
             " colorscheme before set background
-            colorscheme default
-            set background=dark
+            colorscheme mac_classic
+            set background=light
 
             " LINUX NOTEBOOK SOLARIZED-DARK
             highlight Folded ctermbg=8 ctermfg=6
@@ -149,6 +149,7 @@ nnoremap <F5> :set list!<cr>
 nnoremap <F6> :call TrimWhiteSpace()<cr>
 nnoremap <F7> :let @/ = ""<cr>
 nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F9> :Switch<CR>
 nnoremap <F11> :so $MYVIMRC<cr>
 nnoremap <F12> :redraw!<cr>
 nnoremap <C-Left> :tabprevious<cr>
@@ -191,6 +192,41 @@ endfunc
 function! TrimWhiteSpace()
     %s/\s*$//
     ''
+endfunction
+
+function! ShowColorPallete()
+    let num = 255
+    while num >= 0
+        exec 'hi col_'.num.' ctermbg='.num.' ctermfg=white'
+        exec 'syn match col_'.num.' "ctermbg='.num.':...." containedIn=ALL'
+        call append(0, 'ctermbg='.num.':....')
+        let num = num - 1
+    endwhile
+endfunction
+
+function! Switch()
+    let g:currentColorScheme = ''
+    let g:listOfColorScheme = ['default', 'solarized', 'mac_classic']
+    let g:indexOfColorScheme = get(g:, 'indexOfColorScheme', 0)
+
+    let g:currentColorScheme = get(g:listOfColorScheme, g:indexOfColorScheme )
+
+    if g:currentColorScheme == 'default'
+        set background=light
+        colorscheme default
+    elseif g:currentColorScheme == 'solarized'
+        set background=dark
+        colorscheme solarized
+    elseif g:currentColorScheme == 'mac_classic'
+        set background=light
+        colorscheme mac_classic
+    endif
+
+    let g:indexOfColorScheme = g:indexOfColorScheme + 1
+
+    if g:indexOfColorScheme == len(g:listOfColorScheme) + 1
+        let g:indexOfColorScheme = 1
+    endif
 endfunction
 
 " netrw
