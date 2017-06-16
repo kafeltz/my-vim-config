@@ -1,13 +1,20 @@
 execute pathogen#infect()
 
 
+filetype plugin on
+filetype indent on
+syntax on
+
+" set background and colorscheme must come after `syntax on`
 if has('gui_macvim')
-    highlight NonText guifg=gray
+    colorscheme default
+    set background=light
+    highlight NonText guifg=#BBBBBB guibg=NONE
     highlight CursorLineNr ctermfg=red
     highlight CursorLine term=underline cterm=underline guibg=gray
     highlight Folded guifg=gray
-    highlight SpecialKey guifg=gray
-els
+    highlight SpecialKey guifg=#BBBBBB guibg=NONE
+else
     if has("unix")
         let s:uname = system("uname -s")
 
@@ -34,10 +41,6 @@ els
         endif
     endif
 endif
-
-filetype plugin on
-filetype indent on
-syntax on
 
 
 " let mapleader=","
@@ -112,6 +115,8 @@ let g:netrw_winsize=50
 let g:NetrwTopLvlMenu='Ismael'
 let g:jsx_pragma_required = 1
 
+" vim-json
+let g:vim_json_syntax_conceal = 0
 
 " buffers
 " http://stackoverflow.com/questions/16082991/vim-switching-between-files-rapidly-using-vanilla-vim-no-plugins
@@ -122,6 +127,9 @@ nnoremap <leader>r :registers<cr>
 nnoremap <leader>c :w !pbcopy<cr>
 nnoremap <leader>p :set paste!<cr>
 nnoremap <leader>u :CtrlPMRUFiles<cr>
+nnoremap <leader>e :Errors<cr>
+nnoremap <leader>c :SyntasticReset<cr>
+nnoremap <leader>z :SyntasticCheck<cr>
 
 " http://vimcasts.org/episodes/using-vims-paste-mode-with-the-system-paste-command/
 " So remember: with the paste option enabled, you’re safe to use the system paste command, but any user-defined Insert mode mappings will fail. For that reason, it’s a good idea to turn off the paste option as soon as you’re finished using it.
@@ -153,8 +161,6 @@ nnoremap <F8> :TagbarToggle<CR>
 nnoremap <F9> :Switch<CR>
 nnoremap <F11> :so $MYVIMRC<cr>
 nnoremap <F12> :redraw!<cr>
-nnoremap <C-Left> :tabprevious<cr>
-nnoremap <C-Right> :tabnext<cr>
 nnoremap <silent><A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<cr>
 nnoremap <silent><A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<cr>
 nnoremap <leader>h :set cursorline! cursorcolumn!<cr>
@@ -242,4 +248,7 @@ autocmd FileType html,css,htmldjango EmmetInstall
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-
+" let g:syntastic_mode_map = {
+"    \ 'mode': 'passive',
+"    \ 'active_filetypes': ['javascript', 'php'],
+"    \ 'passive_filetypes': ['puppet'] }
