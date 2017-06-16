@@ -12,8 +12,8 @@ if has('gui_macvim')
     highlight NonText guifg=#BBBBBB guibg=NONE
     highlight CursorLineNr ctermfg=red
     highlight CursorLine term=underline cterm=underline guibg=gray
-    highlight Folded guifg=gray
-    highlight SpecialKey guifg=#BBBBBB guibg=NONE
+    highlight Folded guifg=#666666 guibg=#EEEEEE
+    highlight SpecialKey guifg=#DDDDDD guibg=NONE
 else
     if has("unix")
         let s:uname = system("uname -s")
@@ -120,15 +120,14 @@ let g:vim_json_syntax_conceal = 0
 
 " buffers
 " http://stackoverflow.com/questions/16082991/vim-switching-between-files-rapidly-using-vanilla-vim-no-plugins
-nnoremap <leader>l :ls<cr>:b<Space>
-nnoremap <leader>j :jumps<cr>
-nnoremap <leader>m :marks<cr>
-nnoremap <leader>r :registers<cr>
-nnoremap <leader>c :w !pbcopy<cr>
-nnoremap <leader>p :set paste!<cr>
-nnoremap <leader>u :CtrlPMRUFiles<cr>
 nnoremap <leader>e :Errors<cr>
-nnoremap <leader>c :SyntasticReset<cr>
+nnoremap <leader>j :jumps<cr>
+nnoremap <leader>l :ls<cr>:b<Space>
+nnoremap <leader>m :marks<cr>
+nnoremap <leader>p :set paste!<cr>
+nnoremap <leader>r :registers<cr>
+nnoremap <leader>u :CtrlPMRUFiles<cr>
+nnoremap <leader>x :SyntasticReset<cr>
 nnoremap <leader>z :SyntasticCheck<cr>
 
 " http://vimcasts.org/episodes/using-vims-paste-mode-with-the-system-paste-command/
