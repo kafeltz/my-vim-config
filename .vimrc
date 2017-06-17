@@ -28,15 +28,15 @@ else
             highlight CursorLine term=underline cterm=underline guibg=LightGray
             highlight Folded ctermbg=LightGray ctermfg=black
             highlight SpecialKey ctermbg=none ctermfg=LightGray
-        els
+        else
             " colorscheme before set background
-            colorscheme mac_classic
+            colorscheme solarized
             set background=light
 
             " LINUX NOTEBOOK SOLARIZED-DARK
-            highlight Folded ctermbg=8 ctermfg=6
-            highlight SpecialKey ctermfg=0
-            highlight NonText ctermfg=0
+            highlight Folded cterm=NONE ctermbg=7 ctermfg=12
+            highlight SpecialKey ctermfg=253 ctermbg=NONE
+            highlight NonText ctermbg=NONE ctermfg=253
             "
         endif
     endif
@@ -248,7 +248,6 @@ autocmd FileType html,css,htmldjango EmmetInstall
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-" let g:syntastic_mode_map = {
-"    \ 'mode': 'passive',
-"    \ 'active_filetypes': ['javascript', 'php'],
-"    \ 'passive_filetypes': ['puppet'] }
+let g:syntastic_mode_map = {
+   \ 'mode': 'passive',
+   \ 'passive_filetypes': ['javascript'] }
