@@ -27,6 +27,7 @@ else
             highlight CursorLineNr ctermfg=red
             highlight CursorLine term=underline cterm=underline guibg=LightGray
             highlight Folded ctermbg=LightGray ctermfg=black
+            highlight Search ctermbg=Gray
             highlight SpecialKey ctermbg=none ctermfg=LightGray
         els
             " colorscheme before set background
@@ -170,6 +171,9 @@ nnoremap <leader>s :call ToggleMouse()<cr>
 
 " *.ejs syntax
 au BufNewFile,BufRead *.ejs set filetype=html
+autocmd BufNewFile,BufRead bower-* set filetype=plain
+autocmd BufNewFile,BufRead bower_* set filetype=plain
+autocmd BufNewFile,BufRead *.min.js set filetype=plain
 
 nmap <leader>a= :Tabularize /=<CR>
 vmap <leader>a= :Tabularize /=<CR>
@@ -247,7 +251,9 @@ autocmd FileType html,css,htmldjango EmmetInstall
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-" let g:syntastic_mode_map = {
-"    \ 'mode': 'passive',
-"    \ 'active_filetypes': ['javascript', 'php'],
-"    \ 'passive_filetypes': ['puppet'] }
+let g:syntastic_mode_map = {
+    \ 'mode': 'passive',
+    \ 'active_filetypes': ['less', 'python'],
+    \ 'passive_filetypes': ['javascript']
+    \ }
+
