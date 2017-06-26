@@ -29,15 +29,15 @@ else
             highlight Folded ctermbg=LightGray ctermfg=black
             highlight Search ctermbg=Gray
             highlight SpecialKey ctermbg=none ctermfg=LightGray
-        els
+        else
             " colorscheme before set background
-            colorscheme mac_classic
+            colorscheme solarized
             set background=light
 
             " LINUX NOTEBOOK SOLARIZED-DARK
-            highlight Folded ctermbg=8 ctermfg=6
-            highlight SpecialKey ctermfg=0
-            highlight NonText ctermfg=0
+            highlight Folded cterm=NONE ctermbg=7 ctermfg=12
+            highlight SpecialKey ctermfg=253 ctermbg=NONE
+            highlight NonText ctermbg=NONE ctermfg=253
             "
         endif
     endif
@@ -256,4 +256,3 @@ let g:syntastic_mode_map = {
     \ 'active_filetypes': ['less', 'python'],
     \ 'passive_filetypes': ['javascript']
     \ }
-
