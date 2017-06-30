@@ -49,6 +49,7 @@ let mapleader = "\<Space>"
 
 
 " set mouse=a
+set foldlevelstart=0
 set path=$PWD/**
 set backspace=indent,eol,start " http://vim.wikia.com/wiki/Backspace_and_delete_problems
 set hidden
@@ -130,6 +131,9 @@ nnoremap <leader>r :registers<cr>
 nnoremap <leader>u :CtrlPMRUFiles<cr>
 nnoremap <leader>x :SyntasticReset<cr>
 nnoremap <leader>z :SyntasticCheck<cr>
+
+nnoremap <C-Tab> :bnext<CR>
+nnoremap <S-C-Tab> :bprevious<CR>
 
 " http://vimcasts.org/episodes/using-vims-paste-mode-with-the-system-paste-command/
 " So remember: with the paste option enabled, you’re safe to use the system paste command, but any user-defined Insert mode mappings will fail. For that reason, it’s a good idea to turn off the paste option as soon as you’re finished using it.
@@ -253,6 +257,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_mode_map = {
     \ 'mode': 'passive',
-    \ 'active_filetypes': ['less', 'python'],
-    \ 'passive_filetypes': ['javascript']
+    \ 'active_filetypes': [],
+    \ 'passive_filetypes': ['less', 'python', 'javascript']
     \ }
