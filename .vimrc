@@ -49,7 +49,7 @@ let mapleader = "\<Space>"
 
 
 " set mouse=a
-set foldlevelstart=0
+set foldlevelstart=-1
 set path=$PWD/**
 set backspace=indent,eol,start " http://vim.wikia.com/wiki/Backspace_and_delete_problems
 set hidden
