@@ -9,6 +9,7 @@ syntax on
 if has('gui_macvim')
     colorscheme default
     set background=light
+    set guifont=Menlo\ Regular\ for\ Powerline:h12
     highlight NonText guifg=#BBBBBB guibg=NONE
     highlight CursorLineNr ctermfg=red
     highlight CursorLine term=underline cterm=underline guibg=gray
@@ -49,6 +50,7 @@ let mapleader = "\<Space>"
 
 
 " set mouse=a
+set scrolljump=1
 set foldlevelstart=-1
 set path=$PWD/**
 set backspace=indent,eol,start " http://vim.wikia.com/wiki/Backspace_and_delete_problems
@@ -257,6 +259,11 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_mode_map = {
     \ 'mode': 'passive',
-    \ 'active_filetypes': [],
-    \ 'passive_filetypes': ['less', 'python', 'javascript']
+    \ 'active_filetypes': ['javascript'],
+    \ 'passive_filetypes': ['less', 'python']
     \ }
+
+" ctrlp
+" 'i' all files as hidden buffers
+let g:ctrlp_open_multiple_files = 'i'
+
