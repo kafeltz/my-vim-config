@@ -1,6 +1,5 @@
 execute pathogen#infect()
 
-
 filetype plugin on
 filetype indent on
 syntax on
@@ -21,15 +20,20 @@ else
 
         if s:uname == "Darwin\n"
             " colorscheme before set background
-            colorscheme default
+            let g:monokai_term_italic = 1
+            let g:monokai_gui_italic = 1
+            colorscheme solarized
             set background=light
 
             highlight NonText ctermfg=LightGray
             highlight CursorLineNr ctermfg=red
             highlight CursorLine term=underline cterm=underline guibg=LightGray
-            highlight Folded ctermbg=LightGray ctermfg=black
+            highlight Folded ctermbg=LightGray ctermfg=black cterm=NONE
             highlight Search ctermbg=Gray
-            highlight SpecialKey ctermbg=none ctermfg=LightGray
+
+            " com colorscheme default é lightgray, com solarized é 253
+            " highlight SpecialKey ctermbg=none ctermfg=LightGray
+            highlight SpecialKey ctermbg=none ctermfg=254
         else
             " colorscheme before set background
             colorscheme solarized
