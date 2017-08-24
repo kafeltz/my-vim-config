@@ -169,6 +169,7 @@ nnoremap <F6> :call TrimWhiteSpace()<cr>
 nnoremap <F7> :let @/ = ""<cr>
 nnoremap <F8> :TagbarToggle<CR>
 nnoremap <F9> :Switch<CR>
+map <F10> :normal vi{<cr> :'<,'>sort<cr>
 nnoremap <F11> :so $MYVIMRC<cr>
 nnoremap <F12> :redraw!<cr>
 nnoremap <silent><A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<cr>
