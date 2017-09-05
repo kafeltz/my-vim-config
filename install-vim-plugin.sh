@@ -46,3 +46,8 @@ git clone --depth=1 https://github.com/vim-syntastic/syntastic.git
 # https://github.com/tpope/vim-jdaddy
 cd ~/.vim/bundle
 git clone git://github.com/tpope/vim-jdaddy.git
+
+# https://github.com/vim-airline/vim-airline
+git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
+
+### https://github.com/NLKNguyen/papercolor-theme
