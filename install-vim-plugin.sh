@@ -51,3 +51,7 @@ git clone git://github.com/tpope/vim-jdaddy.git
 git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
 
 ### https://github.com/NLKNguyen/papercolor-theme
+
+cd ~/.vim/bundle
+git clone https://github.com/scrooloose/nerdcommenter.git
+
