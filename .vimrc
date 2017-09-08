@@ -1,6 +1,5 @@
 execute pathogen#infect()
 
-
 filetype plugin on
 filetype indent on
 syntax on
@@ -9,25 +8,32 @@ syntax on
 if has('gui_macvim')
     colorscheme default
     set background=light
+    set guifont=Menlo\ Regular\ for\ Powerline:h12
     highlight NonText guifg=#BBBBBB guibg=NONE
     highlight CursorLineNr ctermfg=red
     highlight CursorLine term=underline cterm=underline guibg=gray
-    highlight Folded guifg=gray
-    highlight SpecialKey guifg=#BBBBBB guibg=NONE
+    highlight Folded guifg=#666666 guibg=#EEEEEE
+    highlight SpecialKey guifg=#DDDDDD guibg=NONE
 else
     if has("unix")
         let s:uname = system("uname -s")
 
         if s:uname == "Darwin\n"
             " colorscheme before set background
-            colorscheme default
+            let g:monokai_term_italic = 1
+            let g:monokai_gui_italic = 1
+            colorscheme solarized
             set background=light
 
             highlight NonText ctermfg=LightGray
             highlight CursorLineNr ctermfg=red
             highlight CursorLine term=underline cterm=underline guibg=LightGray
-            highlight Folded ctermbg=LightGray ctermfg=black
-            highlight SpecialKey ctermbg=none ctermfg=LightGray
+            highlight Folded ctermbg=LightGray ctermfg=black cterm=NONE
+            highlight Search ctermbg=Gray
+
+            " com colorscheme default é lightgray, com solarized é 253
+            " highlight SpecialKey ctermbg=none ctermfg=LightGray
+            highlight SpecialKey ctermbg=none ctermfg=254
         else
             " colorscheme before set background
             colorscheme solarized
@@ -48,6 +54,8 @@ let mapleader = "\<Space>"
 
 
 " set mouse=a
+set scrolljump=1
+set foldlevelstart=-1
 set path=$PWD/**
 set backspace=indent,eol,start " http://vim.wikia.com/wiki/Backspace_and_delete_problems
 set hidden
@@ -120,16 +128,18 @@ let g:vim_json_syntax_conceal = 0
 
 " buffers
 " http://stackoverflow.com/questions/16082991/vim-switching-between-files-rapidly-using-vanilla-vim-no-plugins
-nnoremap <leader>l :ls<cr>:b<Space>
-nnoremap <leader>j :jumps<cr>
-nnoremap <leader>m :marks<cr>
-nnoremap <leader>r :registers<cr>
-nnoremap <leader>c :w !pbcopy<cr>
-nnoremap <leader>p :set paste!<cr>
-nnoremap <leader>u :CtrlPMRUFiles<cr>
 nnoremap <leader>e :Errors<cr>
-nnoremap <leader>c :SyntasticReset<cr>
+nnoremap <leader>j :jumps<cr>
+nnoremap <leader>l :ls<cr>:b<Space>
+nnoremap <leader>m :marks<cr>
+nnoremap <leader>p :set paste!<cr>
+nnoremap <leader>r :registers<cr>
+nnoremap <leader>u :CtrlPMRUFiles<cr>
+nnoremap <leader>x :SyntasticReset<cr>
 nnoremap <leader>z :SyntasticCheck<cr>
+
+nnoremap <C-Tab> :bnext<CR>
+nnoremap <S-C-Tab> :bprevious<CR>
 
 " http://vimcasts.org/episodes/using-vims-paste-mode-with-the-system-paste-command/
 " So remember: with the paste option enabled, you’re safe to use the system paste command, but any user-defined Insert mode mappings will fail. For that reason, it’s a good idea to turn off the paste option as soon as you’re finished using it.
@@ -159,6 +169,7 @@ nnoremap <F6> :call TrimWhiteSpace()<cr>
 nnoremap <F7> :let @/ = ""<cr>
 nnoremap <F8> :TagbarToggle<CR>
 nnoremap <F9> :Switch<CR>
+map <F10> :normal vi{<cr> :'<,'>sort<cr>
 nnoremap <F11> :so $MYVIMRC<cr>
 nnoremap <F12> :redraw!<cr>
 nnoremap <silent><A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<cr>
@@ -171,6 +182,9 @@ nnoremap <leader>s :call ToggleMouse()<cr>
 
 " *.ejs syntax
 au BufNewFile,BufRead *.ejs set filetype=html
+autocmd BufNewFile,BufRead bower-* set filetype=plain
+autocmd BufNewFile,BufRead bower_* set filetype=plain
+autocmd BufNewFile,BufRead *.min.js set filetype=plain
 
 nmap <leader>a= :Tabularize /=<CR>
 vmap <leader>a= :Tabularize /=<CR>
@@ -249,5 +263,12 @@ let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_mode_map = {
-   \ 'mode': 'passive',
-   \ 'passive_filetypes': ['javascript'] }
+    \ 'mode': 'passive',
+    \ 'active_filetypes': ['javascript'],
+    \ 'passive_filetypes': ['less', 'python']
+    \ }
+
+" ctrlp
+" 'i' all files as hidden buffers
+let g:ctrlp_open_multiple_files = 'i'
+
