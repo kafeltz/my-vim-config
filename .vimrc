@@ -36,14 +36,25 @@ else
             highlight SpecialKey ctermbg=none ctermfg=254
         else
             " colorscheme before set background
-            colorscheme solarized
+            set t_Co=256 " This is may or may not needed.
+            set rtp+=~/projects/fzf/
+
+            " LINUX NOTEBOOOK PAPERCOLOR DARK
+            " colorscheme PaperColor
+            " set background=dark
+            " highlight NonText ctermbg=NONE ctermfg=235
+            " highlight SpecialKey ctermfg=235 ctermbg=NONE
+
+            colorscheme PaperColor
             set background=light
+            highlight NonText ctermbg=NONE ctermfg=252
+            highlight SpecialKey ctermfg=252 ctermbg=NONE
+
 
             " LINUX NOTEBOOK SOLARIZED-DARK
-            highlight Folded cterm=NONE ctermbg=7 ctermfg=12
-            highlight SpecialKey ctermfg=253 ctermbg=NONE
-            highlight NonText ctermbg=NONE ctermfg=253
-            "
+            " highlight Folded cterm=NONE ctermbg=7 ctermfg=12
+            " highlight SpecialKey ctermfg=253 ctermbg=NONE
+            " highlight NonText ctermbg=NONE ctermfg=253
         endif
     endif
 endif
